@@ -1,15 +1,12 @@
-name: recruitment-app
-
 version: '3.8'
 
 networks:
-  recruitment-network
+  recruitment-network:
 
 volumes:
   mongodb:
 
 services:
-  
   mongodb:
     image: mongo:8
     container_name: mongodb
@@ -19,22 +16,25 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=rootuser
       - MONGO_INITDB_ROOT_PASSWORD=rootpassword
     volumes:
-      -mongodb:/data/db
+      - mongodb:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d:ro
     networks:
       - recruitment-network
 
 
   recruitmentapp:
-    image: 
+    image: nmc9812/recruitmentapp:v1.1.0
     container_name: recruitmentapp
     ports:
       - "3001:3000"
     environment:
-      - MONGO_URI=mongodb://rootuser:rootpassword@mongodb:27017/hr_system?authSource=rootuser
+      - NODE_ENV=production
+      - PORT=3000
+      - MONGO_URI=mongodb://hrapp:hrapp123@mongodb:27017/hr_system?authSource=hr_system
       - DB_NAME=hr_system
+      - DEFAULT_ADMIN_ID=project
+      - DEFAULT_ADMIN_PASSWORD=project123
     networks:
       - recruitment-network
     depends_on:
-      - mongodb
-
-         
+      mongodb:
