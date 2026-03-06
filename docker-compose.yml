@@ -1,0 +1,40 @@
+name: recruitment-app
+
+version: '3.8'
+
+networks:
+  recruitment-network
+
+volumes:
+  mongodb:
+
+services:
+  
+  mongodb:
+    image: mongo:8
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=rootuser
+      - MONGO_INITDB_ROOT_PASSWORD=rootpassword
+    volumes:
+      -mongodb:/data/db
+    networks:
+      - recruitment-network
+
+
+  recruitmentapp:
+    image: 
+    container_name: recruitmentapp
+    ports:
+      - "3001:3000"
+    environment:
+      - MONGO_URI=mongodb://rootuser:rootpassword@mongodb:27017/hr_system?authSource=rootuser
+      - DB_NAME=hr_system
+    networks:
+      - recruitment-network
+    depends_on:
+      - mongodb
+
+         
