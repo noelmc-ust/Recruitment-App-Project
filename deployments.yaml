@@ -12,10 +12,10 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: HR-app
+  name: hr-app
   namespace: noel-ns
   labels:
-    app: HR
+    app: hr
 spec:
   replicas: 4
   selector:
@@ -61,7 +61,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: HR-app
+  name: hr-app
   namespace: noel-ns
 spec:
   selector:
