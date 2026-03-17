@@ -6,7 +6,7 @@ metadata:
 data:
   NODE_ENV: "production"
   PORT: "3000"
-  MONGO_URI: "mongodb://rootuser:rootpassword@10.100.119.117:27017/hr_system?authSource=admin"
+  MONGO_URI: "mongodb://rootuser:rootpassword@mongodb.noel-ns.svc.cluster.local:27017/hr_system?authSource=admin"
 
 ---
 
