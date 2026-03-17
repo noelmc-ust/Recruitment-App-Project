@@ -63,7 +63,7 @@ spec:
                 key: PORT
           - name: MONGO_URI
             valueFrom:
-              configMapKeyRef:
+              secretKeyRef:
                 name: hr-app-secret
                 key: MONGO_URI
           - name: DB_NAME
