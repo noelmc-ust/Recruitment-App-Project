@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: hr-mongo-ConfigMap
+  name: hr-mongo-configmap
 data:
   MONGO_INITDB_ROOT_USERNAME: "rootuser"
   MONGO_INTIDB_ROOT_PASSWORD: "rootpassword"
@@ -45,13 +45,13 @@ spec:
           env:
           - name: MONGO_INITDB_ROOT_USERNAME
             valeFrom:
-              ConfigMapKeyRef:
-                name: hr-mongo-ConfigMap
+              configMapKeyRef:
+                name: hr-mongo-configmap
                 key: MONGO_INITDB_ROOT_USERNAME
           - name: MONGO_INTIDB_ROOT_PASSWORD
             valueFrom:
-              ConfigMapKeyRef:
-                name: hr-mongo-ConfigMap
+              configMapKeyRef:
+                name: hr-mongo-configmap
                 key: MONGO_INTIDB_ROOT_PASSWORD
 
 ---
