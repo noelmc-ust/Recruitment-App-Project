@@ -5,7 +5,7 @@ metadata:
   namespace: noel-ns
 data:
   MONGO_INITDB_ROOT_USERNAME: "rootuser"
-  MONGO_INTIDB_ROOT_PASSWORD: "rootpassword"
+  MONGO_INITDB_ROOT_PASSWORD: "rootpassword"
 
 ---
 
@@ -49,11 +49,11 @@ spec:
               configMapKeyRef:
                 name: hr-mongo-configmap
                 key: MONGO_INITDB_ROOT_USERNAME
-          - name: MONGO_INTIDB_ROOT_PASSWORD
+          - name: MONGO_INITDB_ROOT_PASSWORD
             valueFrom:
               configMapKeyRef:
                 name: hr-mongo-configmap
-                key: MONGO_INTIDB_ROOT_PASSWORD
+                key: MONGO_INITDB_ROOT_PASSWORD
 
 ---
 
