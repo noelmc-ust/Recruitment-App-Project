@@ -14,7 +14,7 @@ kind: Deployment
 metadata:
   name: HR-app
   namespace: noel-ns
-  label:
+  labels:
     app: HR
 spec:
   replicas: 4
